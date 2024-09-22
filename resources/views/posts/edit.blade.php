@@ -13,7 +13,7 @@
                             </div>
                         @endif
 
-                        <form method="post" action="{{ route('post.store') }}">
+                        <form method="post" action="{{ route('posts.update',$post->id) }}">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Post Title</label>
