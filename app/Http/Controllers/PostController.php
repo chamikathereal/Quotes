@@ -13,16 +13,22 @@ class PostController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'thumbnail' => 'required | image' //SET IMAGE TYPE (mimes:jpeg,png,jpg,gif,svg|max:2048)
         ]);
 
         if ($validator->fails()) {
             return back()->with('status',"Somthing went wrong");
         } else {
+            $imageName = time() . '.' . $request->thumbnail->extension();  //createnewname.png
+            
+            $request->thumbnail->move(public_path('thumbnails'), $imageName); //Move image to the folder called thumnail in bpublic directory with the new name.
+            
             Post::create([
                 'user_id' => auth()->user()->id,
                 'title' => $request->title,
-                'description' => $request->description
+                'description' => $request->description,
+                'thumbnail' => $imageName
             ]);
         }
 

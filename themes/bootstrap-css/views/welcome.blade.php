@@ -13,17 +13,15 @@
     </div>
 
     <div class="row mt-2 mb-2">
-
         @foreach ($posts as $post)
-            <div class="col-md-6">
-                <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                    <div class="card-body d-flex flex-column align-items-start">
-                        <h3 class="mb-0">
-                            <a class="text-dark" href="#">{{ $post->title }}</a>
-                        </h3>
-                        <div class="mb-1 text-muted">{{ date('Y-m-d', strtotime($post->created_at)) }}</div>
-                        <p class="card-text mb-auto">{{ $post->description }}</p>
-                        <a href="{{ route('posts.show', $post->id )}}">Continue reading</a>
+            <div class="col-md-3">
+                <div class="card mb-3" style="width: 18rem;"> {{-- style="width: 18rem;" --}}
+                    <img src="{{asset('thumbnails/'.$post->thumbnail)}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $post->title }}</h5>
+                        <small class="text-muted">{{ $post->user->name }} - {{ date('Y-m-d', strtotime($post->created_at)) }}</small>
+                        <p class="card-text">{{ $post->description }}</p>
+                        <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">Continue reading</a>
                     </div>
                 </div>
             </div>
