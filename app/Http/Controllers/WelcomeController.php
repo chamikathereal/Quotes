@@ -9,7 +9,7 @@ class WelcomeController extends Controller
 {
     public function index(){
 
-        $posts = Post::all();
+       $posts = Post::latest()->paginate(5); // paginate 10 posts per page
 
         return view('welcome',compact('posts'));
     }
