@@ -40,10 +40,10 @@
                     <ul class="navbar-nav me-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">New Posts</a>
+                            <a class="nav-link" href="{{ route('home') }}">New Quotes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('posts.all') }}">All Posts</a>
+                            <a class="nav-link" href="{{ route('posts.all') }}">All Quotes</a>
                         </li>
                     </ul>
                     @endauth
