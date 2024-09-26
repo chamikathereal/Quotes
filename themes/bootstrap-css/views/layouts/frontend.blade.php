@@ -42,21 +42,55 @@
                                 <i class="bi bi-menu-button-wide"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <li>
-                                    <a class="dropdown-item btn btn-sm btn-outline-secondary me-2"
-                                        href="{{ route('register') }}">Sign up</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item btn btn-sm btn-outline-secondary"
-                                        href="{{ route('login') }}">Sign In</a>
-                                </li>
+                                @auth
+                                    <li>
+                                        <a class="dropdown-item btn btn-sm btn-outline-secondary"
+                                            href="{{ route('home') }}">Dashboard</a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item btn btn-sm btn-outline-secondary"
+                                            href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                    </li>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                @else
+                                    <li>
+                                        <a class="dropdown-item btn btn-sm btn-outline-secondary me-2"
+                                            href="{{ route('register') }}">Sign up</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item btn btn-sm btn-outline-secondary"
+                                            href="{{ route('login') }}">Sign In</a>
+                                    </li>
+                                @endauth
                             </ul>
                         </div>
                     </div>
 
                     <div class="d-none d-md-block">
-                        <a class="btn btn-sm btn-outline-secondary me-2" href="{{ route('register') }}">Sign up</a>
-                        <a class="btn btn-sm btn-outline-secondary" href="{{ route('login') }}">Sign In</a>
+                        @auth
+                            <a class="btn btn-sm btn-outline-secondary" href="{{ route('home') }}">Dashboard</a>
+
+                            <a class="btn btn-sm btn-outline-secondary" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        @else
+                            <a class="btn btn-sm btn-outline-secondary me-2" href="{{ route('register') }}">Sign up</a>
+                            <a class="btn btn-sm btn-outline-secondary" href="{{ route('login') }}">Sign In</a>
+                        @endauth
                     </div>
                 </div>
             </div>
