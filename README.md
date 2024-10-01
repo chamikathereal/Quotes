@@ -2,6 +2,10 @@
 
 <p>Welcome to the <strong>Quotes</strong>! This project allows users to create, manage, and share inspirational quotes in a simple and user-friendly interface.</p>
 
+<ul align="center">
+    <img align="center" src="https://github.com/chamikathereal/Quotes/blob/main/public/images/UI.png" width="80%"></img>
+</ul>
+
 <h2>🚀 Features</h2>
 <ul>
     <li><strong>User Authentication</strong> 🔑<br>Register and log in to access your personalized dashboard.</li>
